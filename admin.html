@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - Key Generator</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #0f0;
+      font-weight: bold;
+    }
+    ul {
+      margin-top: 20px;
+      padding-left: 0;
+    }
+    li {
+      background: #111;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Key Generator Panel</h2>
+  <input type="text" id="customKey" placeholder="Enter custom key or leave blank">
+  <button onclick="generateKey()">Generate Key</button>
+  <ul id="keyList"></ul>
+
+  <script>
+    const keyList = document.getElementById('keyList');
+    const validKeys = [];
+
+    function generateKey() {
+      let newKey = document.getElementById('customKey').value.trim();
+      if (!newKey) {
+        newKey = 'KEY' + Math.random().toString(36).substr(2, 5).toUpperCase();
+      }
+      validKeys.push(newKey);
+      const li = document.createElement('li');
+      li.textContent = newKey;
+      keyList.appendChild(li);
+    }
+  </script>
+</body>
+</html>

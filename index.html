@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #0ff;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #2979FF;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Enter Login Key</h2>
+    <input type="text" id="keyInput" placeholder="Enter your access key">
+    <button onclick="checkKey()">Login</button>
+    <p id="status" style="color:red;"></p>
+  </div>
+
+  <script>
+    const validKeys = ['ABC123', 'XYZ999', 'TESTKEY'];
+
+    function checkKey() {
+      const key = document.getElementById('keyInput').value.trim();
+      if (validKeys.includes(key)) {
+        localStorage.setItem("user_key", key);
+        window.location.href = "prediction.html";
+      } else {
+        document.getElementById('status').innerText = "Invalid key. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>
